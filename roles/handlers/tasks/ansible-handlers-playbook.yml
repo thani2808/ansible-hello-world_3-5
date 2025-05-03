@@ -1,0 +1,25 @@
+---
+- name: Example Ansible playbook for Handlers
+  hosts: webservers
+  become: yes
+  remote_user: ubuntu
+  roles:
+    - nginx
+
+  handlers:
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
+
+
+---
+- name: Hello World Playbook
+  hosts: ec2
+  become: yes
+  remote_user: ubuntu
+
+  tasks:
+    - name: Print Hello World
+      debug:
+        msg: "Hello, World!"
